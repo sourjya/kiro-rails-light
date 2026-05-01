@@ -38,11 +38,11 @@ for file in "${STEERING_FILES[@]}"; do
   target=".kiro/steering/${file}"
   if [ -f "$target" ]; then
     echo "  SKIP  ${target} (already exists)"
-    ((skipped++))
+    ((skipped++)) || true
   else
     curl -fsSL "${BASE_URL}/.kiro/steering/${file}" -o "$target"
     echo "  ADD   ${target}"
-    ((installed++))
+    ((installed++)) || true
   fi
 done
 
