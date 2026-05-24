@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Comment Standards Check",
+  "description": "Before a git commit, verifies staged source files have proper docstrings and no parser-breaking comments.",
+  "version": "1",
+  "when": {
+    "type": "preToolUse",
+    "toolTypes": [
+      "shell"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Check if the shell command about to run is exactly 'git commit' or starts with 'git commit'. If it does NOT match, respond with just 'OK' and take no further action.\n\nOnly if the command IS a git commit: run 'git diff --cached --name-only' to get staged files, filter to .py, .ts, .tsx source files only (skip .md, .json, .test.*, .spec.* files), and for each source file:\n\n1. Verify exported functions have JSDoc/docstrings (purpose, params, returns).\n2. Verify module-level docstring exists (what the module does, how it fits in the lib).\n3. Check for PARSER-BREAKING COMMENTS: unescaped `*/` inside JSDoc blocks (e.g., glob patterns). Flag as CRITICAL.\n\nFix any violations before allowing the commit."
+  }
+}
