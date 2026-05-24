@@ -50,3 +50,20 @@ tests/
 - **TypeScript libs:** Vitest + @testing-library/react (if React hooks)
 - **Python libs:** pytest
 - **Environment:** jsdom for browser APIs, node for pure logic
+
+## Completion Verification — MANDATORY
+
+**`tsc --noEmit` + `npm run build` passing is NECESSARY but NOT SUFFICIENT.**
+
+Build tools verify types, imports, and syntax. They do NOT verify:
+- Exported functions behave correctly with real inputs
+- Default values produce sensible results (not empty/broken state)
+- The lib works when imported as a dependency in a consumer project
+- Edge cases are handled (null, empty arrays, missing optional fields)
+
+### Rules
+
+1. **Never declare work "done" based solely on build output** — tests must pass, and ideally the lib must be tested in a real consumer.
+2. **Test with real-world inputs** — not just the happy path. Empty objects, null values, and boundary conditions are where libs break.
+3. **Speculation is not verification** — "it should work" is not acceptable. If you haven't tested a code path, say so.
+4. **Consumer smoke test before tagging** — before any release tag, import the built artifact in at least one real consumer and verify it works end-to-end.
