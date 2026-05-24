@@ -76,6 +76,6 @@ A breaking change is any change that requires consumers to modify their code.
 ## Consumer Integration (ADR-008)
 
 **Dev:** `"lib-name": "file:../../shared-libs/lib-name"`
-**Prod:** `"lib-name": "git+ssh://git@github.com:ChaosLabz/lib-name.git#v0.1.0"`
+**Prod:** `"lib-name": "git+ssh://git@github.com:your-org/lib-name.git#v0.1.0"`
 
 The lib must work from both paths. Test with a real consumer before tagging.

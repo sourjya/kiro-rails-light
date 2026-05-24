@@ -22,14 +22,14 @@ Test this: can you refactor the internals without changing `index.ts` exports?
 ## The "Version Drift" Trap
 
 When you update a shared lib, test it in ALL consumers before tagging.
-A change that works in PlanIQ might break Tactiq. Run the consumer's
+A change that works in Project A might break Project B. Run the consumer's
 test suite with the updated lib before releasing.
 
 ## The "Phantom Dependency" Trap
 
 Don't rely on packages that happen to be in the consumer's node_modules.
 If the lib needs a package, declare it in `dependencies` or `peerDependencies`.
-A lib that works in PlanIQ but fails in FaultLens because FaultLens doesn't
+A lib that works in Project A but fails in Project B because Project B doesn't
 have `lodash` installed is a phantom dependency bug.
 
 ## The "React Version Coupling" Trap
@@ -49,7 +49,7 @@ If two consumers import the same lib in the same process (e.g., during
 testing), they share state unexpectedly. Prefer passing state via
 function parameters or React context.
 
-Exception: registries (like shortcut-hints' `shortcutRegistry`) are
+Exception: registries (like a keyboard shortcut registry) are
 acceptable singletons when the design requires global coordination.
 Document the singleton behavior explicitly.
 
