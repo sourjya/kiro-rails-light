@@ -6,7 +6,7 @@ $ErrorActionPreference = "Stop"
 $Repo = "sourjya/kiro-rails-light"
 $Branch = "main"
 $BaseUrl = "https://raw.githubusercontent.com/$Repo/$Branch"
-$CurrentVersion = "0.2.0"
+$CurrentVersion = "0.3.0"
 $VersionFile = ".kiro/.kiro-rails-light-version"
 $OverridesFile = ".kiro/steering/user-lib-overrides.md"
 

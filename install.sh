@@ -11,7 +11,7 @@ set -euo pipefail
 REPO="sourjya/kiro-rails-light"
 BRANCH="main"
 BASE_URL="https://raw.githubusercontent.com/$REPO/$BRANCH"
-CURRENT_VERSION="0.2.0"
+CURRENT_VERSION="0.3.0"
 VERSION_FILE=".kiro/.kiro-rails-light-version"
 OVERRIDES_FILE=".kiro/steering/user-lib-overrides.md"
 
